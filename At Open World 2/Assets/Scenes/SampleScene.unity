@@ -1027,17 +1027,17 @@ PrefabInstance:
     - target: {fileID: 8650630096300980745, guid: 4d9e339ee01331d4ebd9e456d8e4ad8e,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8650630096300980745, guid: 4d9e339ee01331d4ebd9e456d8e4ad8e,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8650630096300980745, guid: 4d9e339ee01331d4ebd9e456d8e4ad8e,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4d9e339ee01331d4ebd9e456d8e4ad8e, type: 3}
