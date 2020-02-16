@@ -3,22 +3,21 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 using System.IO;
+using UnityEngine.SceneManagement;
 
 public class SaveGameManager : MonoBehaviour
 {
-    /// <summary>
+    public float currentID =0  ;
+    public PlayerScript PlayerScript;
     /// The SageGameManager's singleton instance
-    /// </summary>
     private static SaveGameManager instance;
 
-    /// <summary>
+ 
     /// A list of all saveable objects
-    /// </summary>
     public List<SaveableObject> SaveableObjects { get; private set; }
 
-    /// <summary>
+
     /// A property for accessing the SaveGameManager
-    /// </summary>
     public static SaveGameManager Instance
     {
         get
@@ -39,13 +38,13 @@ public class SaveGameManager : MonoBehaviour
         SaveableObjects = new List<SaveableObject>();
     }
 
-    /// <summary>
+   
+
     /// Saves all saveable objects
-    /// </summary>
     public void Save()
     {
         //Stores the amount of saveable object for the current level
-        PlayerPrefs.SetInt(Application.loadedLevel.ToString(), SaveableObjects.Count);
+        PlayerPrefs.SetInt(SceneManager.GetActiveScene().buildIndex.ToString(), SaveableObjects.Count);
 
         //Runs through all the saveable objects
         for (int i = 0; i < SaveableObjects.Count; i++)
@@ -54,14 +53,14 @@ public class SaveGameManager : MonoBehaviour
         }
     }
 
-    /// <summary>
+
     /// Loads all the saved objects
-    /// </summary>
     public void Load()
     {
         //Runs through all the saveable objects
         foreach (SaveableObject obj in SaveableObjects)
         {
+            
             if (obj != null)
             {
                 //removes the object from the game to avoid duplicates
@@ -74,28 +73,146 @@ public class SaveGameManager : MonoBehaviour
         SaveableObjects.Clear();
 
         //Get the amount of objects to load
-        int objCount = PlayerPrefs.GetInt(Application.loadedLevel.ToString());
+        int objCount = PlayerPrefs.GetInt(SceneManager.GetActiveScene().buildIndex.ToString());
 
         //Creates a for loop for loading all the objects
         for (int i = 0; i < objCount; i++)
         {
             //Splits the loaded string into an array
-            string[] values = PlayerPrefs.GetString(Application.loadedLevel + "-" + i).Split('_');
+             string[] values = PlayerPrefs.GetString(SceneManager.GetActiveScene().buildIndex + "-" + i).Split('_');
 
             //Crates an object reference for containing the loaded object
             GameObject tmp = null;
 
             switch (values[0]) //Looks at the object's current type
             {
-                case "Cube": //If it's a cube, then we instantiate a cube
-                    tmp = Instantiate(Resources.Load("Cube") as GameObject);
+                case "A":
+
+                    if (currentID == 1 || currentID == 2 || currentID == 5)
+                    {
+                        tmp = Instantiate(Resources.Load("A") as GameObject);
+                    }
+                
                     break;
-                case "Capsule": //If it's a capsule then we instantiate a capsule
-                    tmp = Instantiate(Resources.Load("Capsule") as GameObject);
+
+                case "B":
+                    if (currentID == 1 || currentID == 2 || currentID == 3 || currentID ==6)
+                    {
+                        tmp = Instantiate(Resources.Load("B") as GameObject);
+                    }
+                        
                     break;
-                case "Cylinder": //If it's a cylinder then we instantiate a capsule
-                    tmp = Instantiate(Resources.Load("Cylinder") as GameObject);
+
+                case "C":
+                    if (currentID == 2 || currentID == 3 || currentID == 4 || currentID == 7)
+                    {
+                        tmp = Instantiate(Resources.Load("C") as GameObject);
+                    }
+                        
                     break;
+
+                case "D":
+                    if (currentID == 3 || currentID == 4 || currentID == 8 )
+                    {
+                        tmp = Instantiate(Resources.Load("D") as GameObject);
+                    }
+                    break;
+
+                case "E":
+                    if (currentID == 1 || currentID == 5 || currentID == 6|| currentID == 9)
+                    {
+                        tmp = Instantiate(Resources.Load("E") as GameObject);
+                    }
+                        
+                    break;
+
+                case "F":
+                    if (currentID == 2 || currentID == 5 || currentID == 6 || currentID ==7|| currentID == 10)
+                    {
+                        tmp = Instantiate(Resources.Load("F") as GameObject);
+                    }
+                        
+                    break;
+
+                case "G":
+                    if (currentID == 3 || currentID == 6 || currentID == 7 ||currentID == 8|| currentID == 11)
+                        tmp = Instantiate(Resources.Load("G") as GameObject);
+                    break;
+
+                case "H":
+                    if (currentID == 4 ||currentID ==7|| currentID == 8 || currentID == 12)
+                    {
+                        tmp = Instantiate(Resources.Load("H") as GameObject);
+                    }
+                        
+                    break;
+                case "I":
+                    if (currentID == 5 || currentID == 9 ||currentID == 10|| currentID == 13)
+                    {
+                        tmp = Instantiate(Resources.Load("I") as GameObject);
+                    }
+                        
+                    break;
+
+                case "J":
+                    if (currentID == 6 ||currentID == 9|| currentID ==10 || currentID == 11 || currentID == 14)
+                    {
+                        tmp = Instantiate(Resources.Load("J") as GameObject);
+                    }
+                        
+                    break;
+
+                case "K":
+                    if (currentID == 7 || currentID == 10 || currentID == 11 || currentID == 12 || currentID == 15)
+                    {
+                        tmp = Instantiate(Resources.Load("K") as GameObject);
+                    }
+                       
+                    break;
+
+                case "L":
+                    if (currentID == 8 || currentID == 11 || currentID == 12|| currentID == 16)
+                    {
+                          tmp = Instantiate(Resources.Load("L") as GameObject);
+                    }
+                       
+                    break;
+
+                case "M":
+                    if (currentID == 9 || currentID == 13 || currentID == 14 )
+                    {
+                         tmp = Instantiate(Resources.Load("M") as GameObject);
+                    }
+                       
+                    break;
+
+                case "N":
+                    if (currentID == 10 || currentID == 13 || currentID == 14 || currentID == 15)
+                    {
+                        tmp = Instantiate(Resources.Load("N") as GameObject);
+                    }
+                        
+                    break;
+
+                case "O":
+                    if (currentID == 11 || currentID == 14 || currentID == 15 || currentID == 16)
+                    {
+                        tmp = Instantiate(Resources.Load("O") as GameObject);
+                    }
+                       
+                    break;
+
+                case "P":
+                    if (currentID == 12 || currentID == 15 || currentID == 16)
+                    {
+                        tmp = Instantiate(Resources.Load("P") as GameObject);
+                    }
+                        
+                    break;
+
+                    //case "Cylinder": //If it's a cylinder then we instantiate a capsule
+                    //    tmp = Instantiate(Resources.Load("Cylinder") as GameObject);
+                    //    break;
             }
 
             if (tmp != null) //If we found something to load
@@ -110,11 +227,8 @@ public class SaveGameManager : MonoBehaviour
     }
 
 
-    /// <summary>
+   
     /// Translates a string to a vector3
-    /// </summary>
-    /// <param name="value">The string to translate</param>
-    /// <returns>Vector3</returns>
     public Vector3 StringToVector(string value)
     {
         //Removes the () from the string
@@ -130,11 +244,9 @@ public class SaveGameManager : MonoBehaviour
         return new Vector3(float.Parse(pos[0]), float.Parse(pos[1]), float.Parse(pos[2]));
     }
 
-    /// <summary>
+    
     /// Translates a string to a Quaternion
-    /// </summary>
-    /// <param name="values">The string to translate</param>
-    /// <returns>Quaternion</returns>
+    /// Translates a string to a Quaternion
     public Quaternion StringToQuaternion(string values)
     {
         //Removes the () from the string

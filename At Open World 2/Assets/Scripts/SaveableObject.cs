@@ -1,14 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 /// <summary>
 /// This is the superclass for all objects that can be saved
 /// </summary>
 public abstract class SaveableObject : MonoBehaviour
 {
-    /// <summary>
+
     /// This string contains saveable parameters from subclasses
-    /// </summary>
     protected string save;
 
     [SerializeField]
@@ -21,20 +21,16 @@ public abstract class SaveableObject : MonoBehaviour
         SaveGameManager.Instance.SaveableObjects.Add(this);
     }
 
-    /// <summary>
+  
     /// Saves the object
-    /// </summary>
-    /// <param name="id">The object's id</param>
     public virtual void Save(int id)
     {
 
-        PlayerPrefs.SetString(Application.loadedLevel + "-" + id.ToString(), objectType + "_" + transform.position.ToString() + "_" + transform.localScale.ToString() + "_" + transform.localRotation + "_" + save);
+        PlayerPrefs.SetString(SceneManager.GetActiveScene().buildIndex + "-" + id.ToString(), objectType + "_" + transform.position.ToString() + "_" + transform.localScale.ToString() + "_" + transform.localRotation + "_" + save);
     }
 
-    /// <summary>
+    
     /// Loads the object
-    /// </summary>
-    /// <param name="values">The object's values</param>
     public virtual void Load(string[] values)
     {
         //Sets the objects position
