@@ -1,22 +1,49 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
 using UnityEngine;
+
+enum ObjectType { Cube, Capsule, Cylinder }
 
 public class SpecificObject : SaveableObject
 {
-   private float speed;
-   private float strength;
+    /// <summary>
+    /// The cube's speed
+    /// </summary>
+    [SerializeField]
+    private float speed;
 
-    public override void Save(int ID)
+    /// <summary>
+    /// The cube's strength
+    /// </summary>
+    [SerializeField]
+    private float strength;
+
+    /// <summary>
+    /// Saves the object
+    /// </summary>
+    /// <param name="id">The object's id</param>
+    public override void Save(int id)
     {
-        base.Save(ID);
+        //Adds the strength and speed to the save string
+        save = speed.ToString() + "_" + strength.ToString();
+
+        //Calls the base save to save
+        base.Save(id);
     }
-    private void Update()
-    {
-        SaveGameManager.Instance.Save();
-    }
+
+    /// <summary>
+    /// Loads the object
+    /// </summary>
+    /// <param name="values">The loadable values</param>
     public override void Load(string[] values)
     {
+        //Loads the speed
+        speed = float.Parse(values[4]);
+
+        //Loads the strength
+        strength = float.Parse(values[5]);
+
+        //Calls the base load function
         base.Load(values);
     }
+
 }
