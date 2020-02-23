@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class SaveGameManager : MonoBehaviour
 {
-    public float currentID =0  ;
+    public float currentID = 0  ;
     public PlayerScript PlayerScript;
     /// The SageGameManager's singleton instance
     private static SaveGameManager instance;

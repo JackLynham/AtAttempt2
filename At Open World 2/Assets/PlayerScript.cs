@@ -16,10 +16,9 @@ public class PlayerScript : MonoBehaviour
             {
                 BS();
 
-                PlayerID = other.gameObject.GetComponent<SpecificObject>().ID;
+                PlayerID = other.gameObject.GetComponent<Chunk>().chunkID;
 
-                PlayerID = other.gameObject.GetComponent<SpecificObject>().ID;
-                SaveGameManager.Instance.currentID = PlayerID;
+                GameManager.instance.currentID = PlayerID;
         
             }
         
@@ -29,8 +28,8 @@ public class PlayerScript : MonoBehaviour
 
     private void OnCollisionExit(Collision collision)
     {
-        SaveGameManager.Instance.Load();
-        firstLoad = false;
+        GameManager.instance.CallLoad();
+      //  firstLoad = false;
     }
 
     void BS()
@@ -38,8 +37,8 @@ public class PlayerScript : MonoBehaviour
         test++;
         if(test <=1)
         {
-         SaveGameManager.Instance.Save();
-         SaveGameManager.Instance.Load();
+         GameManager.instance.CallSave();
+         GameManager.instance.CallLoad();
         }
        
     }
