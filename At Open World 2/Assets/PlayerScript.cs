@@ -8,28 +8,28 @@ public class PlayerScript : MonoBehaviour
     private int test;
     bool firstLoad = true;
 
-    
+
     void OnCollisionEnter(Collision other)
     {
-      
-            if (other.gameObject.tag == "Respawn")
-            {
-                BS();
 
-                PlayerID = other.gameObject.GetComponent<Chunk>().chunkID;
+        if (other.gameObject.tag == "Respawn")
+        {
+            BS();
 
-                GameManager.instance.currentID = PlayerID;
-        
-            }
-        
-            return;
-        
+            PlayerID = other.gameObject.GetComponent<Chunk>().chunkID;
+
+            GameManager.instance.currentID = PlayerID;
+
+        }
+
+        return;
     }
+    
 
     private void OnCollisionExit(Collision collision)
     {
         GameManager.instance.CallLoad();
-      //  firstLoad = false;
+        //firstLoad = false;
     }
 
     void BS()

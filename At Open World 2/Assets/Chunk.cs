@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class Chunk : MonoBehaviour
 {
+    public static Chunk instance;
     public int chunkID;
 
-
-    private void Update()
+    private void Awake()
     {
-        
+        instance = this;
     }
 }

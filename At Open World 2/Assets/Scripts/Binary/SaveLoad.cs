@@ -12,19 +12,44 @@ public class SaveLoad : MonoBehaviour
        public float xPos;
        public float yPos;
        public float zPos;
-       public int ID;
+       public int ID = 0;
     }
 
     [System.Serializable]
     public class SaveData
     {  
         public List<TileInfo> TileInfoList = new List<TileInfo>();
-        //public List<Chunk> IDList = new List<Chunk>();
     }
 
-
+    private GameObject plane;
     void Start()
     {
+    int num = 0;
+      
+        TileInfo info = new TileInfo();
+        for (int i = 0; i < 4; i++) //Width
+        {
+
+            for (int j = 0; j < 4; j++) //Height
+            {
+
+                num++;
+                plane = GameObject.CreatePrimitive(PrimitiveType.Plane);
+
+
+                plane.transform.position += new Vector3(1 +i *10 , 0, 10 +j *10);
+                plane.transform.localScale = new Vector3(1f, 1f, 1f);
+
+                plane.AddComponent<Chunk>();
+
+                plane.GetComponent<Chunk>().chunkID += num;
+
+                plane.AddComponent<BoxCollider>();
+                GameManager.instance.tileList.Add(plane);
+            }
+        }
+
+      
 
     }
 
@@ -39,6 +64,7 @@ public class SaveLoad : MonoBehaviour
             info.xPos = GameManager.instance.tileList[i].transform.position.x;
             info.yPos = GameManager.instance.tileList[i].transform.position.y;
             info.zPos = GameManager.instance.tileList[i].transform.position.z;
+            info.ID = Chunk.instance.chunkID;
 
             data.TileInfoList.Add(info);
             
