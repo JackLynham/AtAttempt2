@@ -42,7 +42,7 @@ public class SaveLoad : MonoBehaviour
 
                 plane.AddComponent<Chunk>();
 
-                plane.GetComponent<Chunk>().chunkID += num;
+               // plane.GetComponent<Chunk>().chunkID += num;
 
                 plane.AddComponent<BoxCollider>();
                 GameManager.instance.tileList.Add(plane);
@@ -64,7 +64,7 @@ public class SaveLoad : MonoBehaviour
             info.xPos = GameManager.instance.tileList[i].transform.position.x;
             info.yPos = GameManager.instance.tileList[i].transform.position.y;
             info.zPos = GameManager.instance.tileList[i].transform.position.z;
-            info.ID = Chunk.instance.chunkID;
+         //   info.ID = Chunk.instance.chunkID;
 
             data.TileInfoList.Add(info);
             

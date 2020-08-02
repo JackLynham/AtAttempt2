@@ -16,7 +16,7 @@ public class PlayerScript : MonoBehaviour
         {
             BS();
 
-            PlayerID = other.gameObject.GetComponent<Chunk>().chunkID;
+         //   PlayerID = other.gameObject.GetComponent<Chunk>().chunkID;
 
             GameManager.instance.currentID = PlayerID;
 
