@@ -9,6 +9,8 @@ public class StartGame : MonoBehaviour
     public int x;
     public int y;
 
+    public Camera camera;
+    public Canvas canvas;
     void Start()
     { 
         
@@ -26,6 +28,8 @@ public class StartGame : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.P))
         {
             PlayerManager.instance.SpawnPlayer();
+            Destroy(camera);
+            Destroy(canvas);
         }
 
   
